@@ -1,0 +1,26 @@
+{
+  "name": "proyecto-02-pasten-bobenrieth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ICC3103-202110/proyecto-02-pasten-bobenrieth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ICC3103-202110/proyecto-02-pasten-bobenrieth/issues"
+  },
+  "homepage": "https://github.com/ICC3103-202110/proyecto-02-pasten-bobenrieth#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "console-table-printer": "^2.9.0",
+    "figlet": "^1.5.0",
+    "inquirer": "^8.1.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
