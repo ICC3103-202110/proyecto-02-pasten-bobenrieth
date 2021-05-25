@@ -1,5 +1,5 @@
 const {getTitle, getTable,selectAction1,noCities,selectAction2,
-    InputLocation} = require("./view")
+    InputLocation, selectCity} = require("./view")
 const {addCity, randomTemp,arrowTable,addArrowToList} = require("./update")
 const { printTable } = require('console-table-printer');
 
@@ -21,14 +21,12 @@ async function app(listCitys,listArrows){
         a = await selectAction2()
     }
     action = a.action
-    console.log(action)
+    
     
     if (action ==="Add City"){
         b = await InputLocation()
         location = b.input
-        console.log(location)
         newListCitys = addCity(listCitys,location)
-        console.log(newListCitys)
 
         maxTemp = randomTemp(0,100)
         minTemp = randomTemp(0,maxTemp)
@@ -37,7 +35,12 @@ async function app(listCitys,listArrows){
         arrow = arrowTable(location,newTemp,maxTemp,minTemp)
         newListArrows = addArrowToList(listArrows,arrow)
     }
-
+    if (action ==="Update City"){
+        console.log("aca inicia update")
+        b = await selectCity(listCitys)
+        chosenCity = b.city
+        console.log(chosenCity)
+    }
     app(newListCitys,newListArrows)
 
 }

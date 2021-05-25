@@ -54,6 +54,14 @@ function InputLocation(){
     })
 }
 
+function selectCity(listCitys){
+    return inquirer.prompt({
+        type: 'list',
+        name: 'city',
+        message: 'Update city:',
+        choices: listCitys
+    })
+}
 
 
 module.exports = {
@@ -62,6 +70,7 @@ module.exports = {
     noCities,
     selectAction1,
     selectAction2,
-    InputLocation
+    InputLocation,
+    selectCity
     
 }
