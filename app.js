@@ -36,6 +36,7 @@ async function app(listCitys,listArrows){
         arrow = arrowTable(location,newTemp,maxTemp,minTemp)
         newListArrows = addArrowToList(listArrows,arrow)
     }
+
     if (action ==="Update City"){
 
         b = await selectCity(listCitys)
@@ -49,9 +50,24 @@ async function app(listCitys,listArrows){
         
         arrow = arrowTable(chosenCity,newTemp,maxTemp,minTemp)
         listArrows[positionOfCity] = arrow
-        newListArrows = listArrows
-        
+        newListArrows = listArrows  
     }
+
+    if (action ==="Delete City"){
+
+        b = await selectCity(listCitys)
+        chosenCity = b.city
+
+        positionOfCity = searchCityOnList(listCitys,chosenCity)
+
+        listCitys.splice(positionOfCity,1)
+        listArrows.splice(positionOfCity,1)
+
+        newListCitys = listCitys
+        newListArrows = listArrows       
+    }
+
+
     app(newListCitys,newListArrows)
 
 }
