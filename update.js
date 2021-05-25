@@ -19,11 +19,18 @@ function addArrowToList(listArrows,arrow){
     return listArrows
 }
 
+function searchCityOnList(listCitys,city){
+    let pos = listCitys.indexOf(city)
+    return pos
+}
+
+
 
 module.exports = {
     addCity,
     randomTemp,
     arrowTable,
-    addArrowToList
+    addArrowToList,
+    searchCityOnList
     
 }
