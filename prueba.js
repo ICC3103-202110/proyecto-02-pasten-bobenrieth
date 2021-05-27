@@ -1,5 +1,4 @@
 const axios = require('axios')
-const fetch = require('node-fetch')
 
 
 apiKey = "ab899343c048361943d75fc37a6d0f36"
