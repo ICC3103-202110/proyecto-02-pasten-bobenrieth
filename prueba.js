@@ -4,37 +4,40 @@ const fetch = require('node-fetch')
 
 apiKey = "ab899343c048361943d75fc37a6d0f36"
 
-
-//con esto me conecto a la API con ciudad londres
-/*
-axios.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ab899343c048361943d75fc37a6d0f36')
-  .then(function (response) {
-    // handle success
-    console.log(response.data.main);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
-*/
-
 function conectApi(city,apiKey){
     //al lado de appid, puedes cambiar el pais, en este momento esta en cl
     a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+',cl&appid='+apiKey)
     return a
 }
 
-
+function putValue(value){
+  s = value + " hola"
+  return s
+}
 
 b = conectApi("antofagasta","ab899343c048361943d75fc37a6d0f36")
 j = b.then((response) => {
-  x = response.data.main
-  console.log(x)
+  temp = response.data.main.temp
+  tempMax = response.data.main.temp_max
+  tempMin = response.data.main.temp_min
+  console.log(temp)
+  console.log(tempMax)
+  console.log(tempMin)
+  //de esta forma podemos usar las otras funciones
+  console.log(putValue(temp))
+  error = ""
 })
-
+.catch(function () {
+  // handle error
+  error = "esta ciudad no existe"
+  console.log(error);
+})
+.then(function () {
+  // always executed
+  if (error != "esta ciudad no existe" ){
+    console.log(temp)
+  }
+});
 
 
 
