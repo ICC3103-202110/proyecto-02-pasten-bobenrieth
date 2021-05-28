@@ -55,9 +55,9 @@ async function app(listCitys,listArrows){
             // always executed
             if (error != "esta ciudad no existe" ){
 
-              arrow = arrowTable(location,temp,tempMax,tempMin)
-              newListArrows = addArrowToList(listArrows,arrow)
-              app(newListCitys,newListArrows)
+                arrow = arrowTable(location,temp,tempMax,tempMin)
+                newListArrows = addArrowToList(listArrows,arrow)
+                
             }
             if (error === "esta ciudad no existe" ){
                 
@@ -67,8 +67,9 @@ async function app(listCitys,listArrows){
         
                 arrow = arrowTable(location,newTemp,maxTemp,minTemp)
                 newListArrows = addArrowToList(listArrows,arrow)
-                app(newListCitys,newListArrows)
+                
             }
+            app(newListCitys,newListArrows)
           });
           // */
     }
@@ -80,6 +81,7 @@ async function app(listCitys,listArrows){
         
         positionOfCity = searchCityOnList(listCitys,chosenCity)
 
+        /*
         maxTemp = randomTemp(0,100)
         minTemp = randomTemp(0,maxTemp)
         newTemp = randomTemp(minTemp,maxTemp)
@@ -88,6 +90,43 @@ async function app(listCitys,listArrows){
         listArrows[positionOfCity] = arrow
         newListArrows = listArrows  
         app(newListCitys,newListArrows)
+        */
+        // desde aqui comienza la API
+
+        api = conectApi(chosenCity,"ab899343c048361943d75fc37a6d0f36")
+        h = await api.then((response) => {
+            temp = response.data.main.temp
+            tempMax = response.data.main.temp_max
+            tempMin = response.data.main.temp_min
+            error = ""
+          })
+          .catch(function () {
+            // handle error
+            error = "esta ciudad no existe"
+            console.log(error);
+          })
+          .then(function () {
+            // always executed
+            if (error != "esta ciudad no existe" ){
+
+                arrow = arrowTable(chosenCity,temp,tempMax,tempMin)
+                listArrows[positionOfCity] = arrow
+                newListArrows = listArrows  
+                
+            }
+            if (error === "esta ciudad no existe" ){
+                
+                maxTemp = randomTemp(0,100)
+                minTemp = randomTemp(0,maxTemp)
+                newTemp = randomTemp(minTemp,maxTemp)
+        
+                arrow = arrowTable(chosenCity,newTemp,maxTemp,minTemp)
+                listArrows[positionOfCity] = arrow
+                newListArrows = listArrows  
+                
+            }
+            app(newListCitys,newListArrows)
+          });
     }
 
     if (action ==="Delete City"){
