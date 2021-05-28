@@ -14,6 +14,8 @@ function putValue(value){
   return s
 }
 
+h = "hola"
+
 b = conectApi("antofagasta","ab899343c048361943d75fc37a6d0f36")
 j = b.then((response) => {
   temp = response.data.main.temp
@@ -35,9 +37,9 @@ j = b.then((response) => {
   // always executed
   if (error != "esta ciudad no existe" ){
     console.log(temp)
+    console.log(h)
   }
 });
-
 
 
 

@@ -1,3 +1,4 @@
+const axios = require('axios')
 
 function addCity(listCitys,city){
     listCitys.push(city)
@@ -24,6 +25,11 @@ function searchCityOnList(listCitys,city){
     return pos
 }
 
+function conectApi(city,apiKey){
+    //al lado de appid, puedes cambiar el pais, en este momento esta en cl
+    a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+',cl&appid='+apiKey)
+    return a
+}
 
 
 module.exports = {
@@ -31,6 +37,7 @@ module.exports = {
     randomTemp,
     arrowTable,
     addArrowToList,
-    searchCityOnList
+    searchCityOnList,
+    conectApi
     
 }
