@@ -31,6 +31,13 @@ function conectApi(city,apiKey){
     return a
 }
 
+function kelvinToCelsius(value){
+    value = Number(value)
+    celsius = value - 273.15
+    return celsius.toFixed(2)
+}
+
+
 
 module.exports = {
     addCity,
@@ -38,6 +45,7 @@ module.exports = {
     arrowTable,
     addArrowToList,
     searchCityOnList,
-    conectApi
+    conectApi,
+    kelvinToCelsius
     
 }

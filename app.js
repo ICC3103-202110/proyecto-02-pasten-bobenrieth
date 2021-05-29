@@ -1,8 +1,7 @@
 const {getTitle, getTable,selectAction1,noCities,selectAction2,
     InputLocation, selectCity} = require("./view")
 const {addCity, randomTemp,arrowTable,addArrowToList,
-        searchCityOnList, conectApi} = require("./update")
-const { printTable } = require('console-table-printer');
+        searchCityOnList, conectApi,kelvinToCelsius} = require("./update")
 
 
 
@@ -41,9 +40,9 @@ async function app(listCitys,listArrows){
         // /*
         api = conectApi(location,"ab899343c048361943d75fc37a6d0f36")
         h = await api.then((response) => {
-            temp = response.data.main.temp
-            tempMax = response.data.main.temp_max
-            tempMin = response.data.main.temp_min
+            temp = kelvinToCelsius(response.data.main.temp)
+            tempMax = kelvinToCelsius(response.data.main.temp_max)
+            tempMin = kelvinToCelsius(response.data.main.temp_min)
             error = ""
           })
           .catch(function () {
@@ -95,9 +94,9 @@ async function app(listCitys,listArrows){
 
         api = conectApi(chosenCity,"ab899343c048361943d75fc37a6d0f36")
         h = await api.then((response) => {
-            temp = response.data.main.temp
-            tempMax = response.data.main.temp_max
-            tempMin = response.data.main.temp_min
+            temp = kelvinToCelsius(response.data.main.temp)
+            tempMax = kelvinToCelsius(response.data.main.temp_max)
+            tempMin = kelvinToCelsius(response.data.main.temp_min)
             error = ""
           })
           .catch(function () {
