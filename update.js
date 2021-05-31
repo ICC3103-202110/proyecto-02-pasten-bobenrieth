@@ -27,7 +27,8 @@ function searchCityOnList(listCitys,city){
 
 function conectApi(city,apiKey){
     //al lado de appid, puedes cambiar el pais, en este momento esta en cl
-    a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+',cl&appid='+apiKey)
+    //a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+',cl&appid='+apiKey)
+    a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey)
     return a
 }
 
