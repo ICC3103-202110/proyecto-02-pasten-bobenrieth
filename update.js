@@ -27,15 +27,9 @@ function searchCityOnList(listCitys,city){
 
 function conectApi(city,apiKey){
     //al lado de appid, puedes cambiar el pais, en este momento esta en cl
-    //a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+',cl&appid='+apiKey)
-    a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey)
+    //a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey)
+    a = axios.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+apiKey+"&units=metric")
     return a
-}
-
-function kelvinToCelsius(value){
-    value = Number(value)
-    celsius = value - 273.15
-    return celsius.toFixed(2)
 }
 
 
@@ -46,7 +40,6 @@ module.exports = {
     arrowTable,
     addArrowToList,
     searchCityOnList,
-    conectApi,
-    kelvinToCelsius
+    conectApi
     
 }
